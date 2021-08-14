@@ -1,10 +1,17 @@
 package ru.netology.manager;
 
+import lombok.NoArgsConstructor;
 import ru.netology.domain.AfishaItem;
 
+@NoArgsConstructor
 public class AfishaManager {
+    int limitLength = 10;
 
     private AfishaItem[] items = new AfishaItem[0];
+
+    public AfishaManager(int limitLength) {
+        this.limitLength = limitLength;
+    }
 
     public void add(AfishaItem item) {
         int length = items.length + 1;
@@ -19,10 +26,10 @@ public class AfishaManager {
 
     public AfishaItem[] getAll() {
         int resultLength;
-        if (items.length < 10) {
+        if (items.length < limitLength) {
             resultLength = items.length;
         } else {
-            resultLength = 10;
+            resultLength = limitLength;
         }
         AfishaItem[] result = new AfishaItem[resultLength];
 
@@ -33,3 +40,4 @@ public class AfishaManager {
         return result;
     }
 }
+
